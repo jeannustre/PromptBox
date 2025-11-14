@@ -21,12 +21,23 @@ struct Filters {
     }
     
     @Generable
-    enum Location {
+    enum Location  {
         case nearMe
         case currentScreen
         case specificPlace(place: String)
+        
+        var description: String {
+            switch self {
+            case .nearMe:
+                "nearMe"
+            case .currentScreen:
+                "currentScreen"
+            case .specificPlace(let place):
+                "specificPlace: \(place)"
+            }
+        }
     }
-    
+
     @Guide(description: "The possible sports mentioned in the query.")
     let sportTypes: [FilterSportType]
     

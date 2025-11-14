@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import FoundationModels
 
 struct FiltersView: View {
     
@@ -20,7 +19,7 @@ struct FiltersView: View {
             FilterView(title: "Difficulties: ", values: filters.difficulties.map(\.rawValue))
             FilterView(title: "Sport types: ", values: filters.sportTypes.map(\.rawValue))
             FilterView(title: "Specifies location: ", values: [filters.specifiesLocation ? "yes" : "no"])
-            FilterView(title: "Specified location: ", values: [filters.location.generatedContent.jsonString])
+            FilterView(title: "Specified location: ", values: [filters.location.description])
             FilterView(title: "Specifies looping: ", values: [filters.specifiesLooping ? "yes" : "no"])
             FilterView(title: "Popular: ", values: [filters.popular
                                                     ? "yes" : "no"])
