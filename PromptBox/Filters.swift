@@ -20,19 +20,12 @@ struct Filters {
         case allRatings, above3, above4
     }
     
-//    @Generable
-//    enum Requirement: String {
-//        case bivouackingTolerated
-//        case crowded
-//        case dogFriendly
-//        case easyParking
-//        case familyFriendly
-//        case limitedParking
-//        case shaded
-//        case strollerAccessible
-//        case technicalSections
-//        case wheelchairAccessible
-//    }
+    @Generable
+    enum Location {
+        case nearMe
+        case currentScreen
+        case specificPlace(place: String)
+    }
     
     @Guide(description: "The possible sports mentioned in the query.")
     let sportTypes: [FilterSportType]
@@ -49,8 +42,8 @@ struct Filters {
     @Guide(description: "Whether the query mentions a place or a location.")
     let specifiesLocation: Bool
     
-    @Guide(description: "If specifiesLocation is true, must contain the location specified by the query. Otherwise must be '**User Position**'")
-    let location: String
+    @Guide(description: "If there is no  location mentioned in the query, must be `currentScreen`. If the location is related to the user position, must be `nearMe`. If a specific place is mentioned, use `specificPlace`.")
+    let location: Location
     
     @Guide(description: "Explicit requirements the route must have. Must be explictly stated in the query. Can be empty.", .minimumCount(0))
     let requirements: [String]
