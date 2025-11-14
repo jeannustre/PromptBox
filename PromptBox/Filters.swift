@@ -20,19 +20,19 @@ struct Filters {
         case allRatings, above3, above4
     }
     
-    @Generable
-    enum Requirement: String {
-        case bivouackingTolerated
-        case crowded
-        case dogFriendly
-        case easyParking
-        case familyFriendly
-        case limitedParking
-        case shaded
-        case strollerAccessible
-        case technicalSections
-        case wheelchairAccessible
-    }
+//    @Generable
+//    enum Requirement: String {
+//        case bivouackingTolerated
+//        case crowded
+//        case dogFriendly
+//        case easyParking
+//        case familyFriendly
+//        case limitedParking
+//        case shaded
+//        case strollerAccessible
+//        case technicalSections
+//        case wheelchairAccessible
+//    }
     
     @Guide(description: "The possible sports mentioned in the query.")
     let sportTypes: [FilterSportType]
@@ -53,5 +53,5 @@ struct Filters {
     let location: String
     
     @Guide(description: "Explicit requirements the route must have. Must be explictly stated in the query. Can be empty.", .minimumCount(0))
-    let requirements: [Requirement]
+    let requirements: [String]
 }

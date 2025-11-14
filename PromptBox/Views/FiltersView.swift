@@ -23,7 +23,7 @@ struct FiltersView: View {
             FilterView(title: "Specifies looping: ", values: [filters.specifiesLooping ? "yes" : "no"])
             FilterView(title: "Popular: ", values: [filters.popular
                                                     ? "yes" : "no"])
-            FilterView(title: "User tags: ", values: filters.requirements.map(\.rawValue))
+            FilterView(title: "Requirements: ", values: filters.requirements)
         }
         .padding()
         .background(Color(.systemGroupedBackground))
