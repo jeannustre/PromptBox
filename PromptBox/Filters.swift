@@ -16,21 +16,47 @@ struct Filters {
     }
     
     @Generable
-    enum SportType: String {
-        case hiking, cycling
-    }
-    
-    @Generable
     enum RatingRange: String {
         case allRatings, above3, above4
     }
     
-    @Guide(description: "The difficulty of the route. 'Difficult' or 'Hard' mean hard, 'Medium' means medium and 'Easy' means easy.")
-    let difficulties: [Difficulty]?
-    @Guide(description: "The place around which the search should take place. Can be a city name, location name, or around the user's location.")
-    let place: String
-    @Guide(description: "The sport type, either hiking or cycling.")
-    let sportTypes: [SportType]?
-    @Guide(description: "If no rating mentioned, defaults to allRatings")
-    let ratings: RatingRange
+    @Generable
+    enum UserTags: String {
+        case bivouackingTolerated
+        case closed
+        case crowded
+        case dangerousTrack
+        case dogFriendly
+        case easyParking
+        case familyFriendly
+        case limitedParking
+        case notCrowded
+        case poorCondition
+        case privateProperty
+        case shaded
+        case strollerAccessible
+        case technicalSections
+        case wheelchairAccessible
+    }
+    
+    @Guide(description: "The possible sports mentioned in the query.")
+    let sportTypes: [FilterSportType]
+    
+    @Guide(description: "The allowed difficulties of the route, or none to include all routes.", .count(0...3))
+    let difficulties: [Difficulty]
+    
+    @Guide(description: "Only true if the user's query mentions terms like 'popular' or 'well rated'")
+    let popular: Bool
+    
+    @Guide(description: "Whether que user's query mentions the hike/balad must be a loop.")
+    let specifiesLooping: Bool
+    
+    @Guide(description: "Whether que user's query mentions a place or a location.")
+    let specifiesLocation: Bool
+    
+    @Guide(description: "If specifiesLocation is true, must contain the location specified by the query. Otherwise must be '**User Position**'")
+    let location: String
+    
+    @Guide(description: "Explicit requirements the route must have. Can be empty.")
+    let requirements: [UserTags]
 }
