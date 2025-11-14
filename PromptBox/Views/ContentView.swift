@@ -10,7 +10,7 @@ import FoundationModels
 
 struct ContentView: View {
     
-    @State private var session = LanguageModelSession(instructions: "You are a search bar helping users find hikes. You can filter hikes by location, difficulty, duration, etc." /* When the users's query doesn't include an information, be the most inclusive you can about the field."*/)
+    @State private var session = LanguageModelSession(instructions: "You are a search bar helping users find hikes using a query. Your objective is generating a Filters object that contains just the information they requested in the query, nothing more. Don't fill fields the user query doesn't explicitly mention.")
     
     @State private var query: String = ""
     
@@ -47,7 +47,7 @@ struct ContentView: View {
     }
     
     func generateFilters(query: String) async throws -> Filters {
-        let response = try await session.respond(to: "Generate a Filters object from a search bar input for hikes or cycle rides. Don't fill fields the user query doesn't explicitly mention. The user query is : '\(query)'", generating: Filters.self)
+        let response = try await session.respond(to: "Generate a Filters object from a search bar input for hikes or cycle rides.  The user query is : \n\n'\(query)'\n\n", generating: Filters.self)
         return response.content
     }
     

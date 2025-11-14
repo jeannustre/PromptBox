@@ -47,13 +47,13 @@ struct Filters {
     @Guide(description: "Only true if the query mentions terms like 'popular' or 'well rated'")
     let popular: Bool
     
-    @Guide(description: "Whether the query mentions the hike/balad must be a loop.")
+    @Guide(description: "Only true if the query mentions the hike/balad must be a loop.")
     let specifiesLooping: Bool
     
-    @Guide(description: "Whether the query mentions a place or a location.")
+    @Guide(description: "Only true if the query mentions a place or a location.")
     let specifiesLocation: Bool
     
-    @Guide(description: "If there is no  location mentioned in the query, must be `currentScreen`. If the location is related to the user position, must be `nearMe`. If a specific place is mentioned, use `specificPlace`.")
+    @Guide(description: "If there is no location mentioned in the query, must be `currentScreen`. If the location is related to the user position, must be `nearMe`. If a specific place is mentioned, use `specificPlace`. When using `specificPlace`, use only the exact place name and nothing else.")
     let location: Location
     
     @Guide(description: "Explicit requirements the route must have. Must be explictly stated in the query. Can be empty.", .minimumCount(0))
